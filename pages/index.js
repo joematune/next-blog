@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Alert from '../components/alert'
@@ -6,9 +7,13 @@ import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 
+// type HomeProps = {
+//   id: String,
+//   title: String,
+//   date: String
+// }
+
 export default function Home({ allPostsData }) {
-
-
   return (
     <Layout home>
       <Head>
@@ -27,8 +32,10 @@ export default function Home({ allPostsData }) {
           Great opportunity to use SWR https://swr.vercel.app/
           Fetch a dev joke, display it as me
         */}
-        <Alert type="error"> error!</Alert>
-        <Alert type="success">success!</Alert>
+        <Alert type="error"> Bad</Alert>
+        <Alert type="error"> Bad</Alert>
+        <Alert type="error"> Not good</Alert>
+        <Alert type="success">Decent</Alert>
 
 
       </section>
@@ -54,7 +61,7 @@ export default function Home({ allPostsData }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
@@ -62,3 +69,12 @@ export async function getStaticProps() {
     }
   }
 }
+
+// export const getStaticProps: GetStaticProps = async context => {
+//   const allPostsData = getSortedPostsData()
+//   return {
+//     props: {
+//       allPostsData
+//     }
+//   }
+// }
